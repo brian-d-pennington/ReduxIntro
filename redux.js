@@ -20,3 +20,22 @@ const deletePolicy = (name) => {
         }
     };
 };
+
+const createClaim = (name, amountToCollect) => {
+    return {
+        type: 'CREATE_CLAIM',
+        payload: {
+            name: name,
+            amountToCollect: amountToCollect
+        }
+    };
+};
+
+// Reducers
+
+const claimsHistory = (listOfClaimsToUpdate = [], action) => {
+    if (action.type === 'CREATE_CLAIM')  {
+        return [...listOfClaimsToUpdate, action.payload];
+    }
+    return listOfClaimsToUpdate;
+};
